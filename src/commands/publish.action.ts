@@ -58,7 +58,7 @@ class PublishAction extends ActionBase {
     writeFileSync(`${process.cwd()}/package.json`, JSON.stringify(pkg, null, 2));
     this.info('Successful Updated package.json');
 
-    if (push === true) {
+    if (push === true || push === 1) {
       const name: string = pkg.name as string;
       if (name.startsWith('@') && name.includes('/')) {
         exec('npm publish --access public');
