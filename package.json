@@ -1,0 +1,47 @@
+{
+  "name": "@mohism/publish",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx eslint src/**/*.ts --fix && npx tsc",
+    "lint": "npx eslint src/**/*.ts --fix",
+    "start": "echo \"run 'sudo npm link' and 'publish -h'\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohism-framework/publish.git"
+  },
+  "keywords": [
+    "mohism",
+    "action",
+    "publish"
+  ],
+  "author": "lanhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohism-framework/publish/issues"
+  },
+  "homepage": "https://github.com/mohism-framework/publish#readme",
+  "devDependencies": {
+    "@types/colors": "^1.2.1",
+    "@types/node": "^12.11.7",
+    "@types/shelljs": "^0.8.5",
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/parser": "^2.5.0",
+    "eslint": "^6.6.0",
+    "nodemon": "^1.19.4",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "@mohism/cli-wrapper": "^1.2.15",
+    "colors": "^1.4.0",
+    "shelljs": "^0.8.3"
+  },
+  "bin": {
+    "publish": "dist/bin/index.js"
+  },
+  "mohismInit": true
+}
