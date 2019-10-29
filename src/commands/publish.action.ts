@@ -37,9 +37,9 @@ class PublishAction extends ActionBase {
     const newVersion = ((idx: number): string => {
       switch (idx) {
       case 0:
-        return `${major + 1}.${minor}.${patch}`;
+        return `${major + 1}.0.0`;
       case 1:
-        return `${major}.${minor + 1}.${patch}`;
+        return `${major}.${minor + 1}.0`;
       case 2:
         return `${major}.${minor}.${patch + 1}`;
       case 3:
