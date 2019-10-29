@@ -28,8 +28,8 @@ class PublishAction extends ActionBase {
     const answer = await this.question.select(
       `当前版本${currentVersion}, 请问阁下意欲何为:`.green,
       [
-        `升级主版本: ${red(`${major + 1}`)}.${minor}.${patch}`,
-        `升级次版本: ${major}.${yellow(`${minor + 1}`)}.${patch}`,
+        `升级主版本: ${red(`${major + 1}`)}.0.0`,
+        `升级次版本: ${major}.${yellow(`${minor + 1}`)}.0`,
         `打个补丁: ${major}.${minor}.${blue(`${patch + 1}`)}`,
         '什么也不做'
       ]
