@@ -1,6 +1,6 @@
 {
   "name": "@mohism/publish",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "dist/commands/publish.action.js",
   "scripts": {
@@ -36,7 +36,8 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@mohism/cli-wrapper": "^1.2.15",
+    "@mohism/cli-wrapper": "^1.2.23",
+    "@mohism/utils": "^1.0.1",
     "colors": "^1.4.0",
     "shelljs": "^0.8.3"
   },

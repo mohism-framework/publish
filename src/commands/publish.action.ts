@@ -1,8 +1,9 @@
 import ActionBase from '@mohism/cli-wrapper/dist/libs/action.class';
-import { Dict, ArgvOption } from '@mohism/cli-wrapper/dist/libs/utils/type';
-import { red, yellow, blue } from 'colors';
+import { ArgvOption } from '@mohism/cli-wrapper/dist/libs/utils/type';
+import { blue, red, yellow } from 'colors';
 import { existsSync, writeFileSync } from 'fs';
 import { exec } from 'shelljs';
+import { Dict } from '@mohism/utils';
 
 class PublishAction extends ActionBase {
   options(): Dict<ArgvOption> {
@@ -36,16 +37,16 @@ class PublishAction extends ActionBase {
     );
     const newVersion = ((idx: number): string => {
       switch (idx) {
-      case 0:
-        return `${major + 1}.0.0`;
-      case 1:
-        return `${major}.${minor + 1}.0`;
-      case 2:
-        return `${major}.${minor}.${patch + 1}`;
-      case 3:
-        return currentVersion;
-      default:
-        return currentVersion;
+        case 0:
+          return `${major + 1}.0.0`;
+        case 1:
+          return `${major}.${minor + 1}.0`;
+        case 2:
+          return `${major}.${minor}.${patch + 1}`;
+        case 3:
+          return currentVersion;
+        default:
+          return currentVersion;
       }
     })(answer);
 
