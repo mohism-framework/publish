@@ -4,6 +4,7 @@ import { blue, red, yellow } from 'colors';
 import { existsSync, writeFileSync } from 'fs';
 import { exec } from 'shelljs';
 import { Dict } from '@mohism/utils';
+import Shaking from './libs/shake';
 
 class PublishAction extends ActionBase {
   options(): Dict<ArgvOption> {
@@ -54,6 +55,9 @@ class PublishAction extends ActionBase {
       this.info('什么也不做');
       process.exit();
     }
+
+    // shaking node_modules
+    Shaking(`${process.cwd()}/node_modules`);
 
     pkg.version = newVersion;
     writeFileSync(`${process.cwd()}/package.json`, JSON.stringify(pkg, null, 2));
