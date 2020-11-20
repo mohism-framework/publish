@@ -28,26 +28,39 @@ class PublishAction extends ActionBase {
     const answer = await this.question.select(
       `当前版本${currentVersion}, 请问阁下意欲何为:`.green,
       [
-        `升级主版本: ${red(`${major + 1}`)}.0.0`,
-        `升级次版本: ${major}.${yellow(`${minor + 1}`)}.0`,
-        `打个补丁: ${major}.${minor}.${blue(`${patch + 1}`)}`,
-        '什么也不做'
+        {
+          label: `升级主版本: ${red(`${major + 1}`)}.0.0`,
+          value: '0',
+        },
+        {
+          label: `升级次版本: ${major}.${yellow(`${minor + 1}`)}.0`,
+          value: '1',
+        },
+        {
+          label: `打个补丁: ${major}.${minor}.${blue(`${patch + 1}`)}`,
+          value: '2',
+        },
+        {
+          label: '什么也不做',
+          value: '3',
+        },
       ]
     );
-    const newVersion = ((idx: number): string => {
+
+    const newVersion = ((idx: string): string => {
       switch (idx) {
-      case 0:
-        return `${major + 1}.0.0`;
-      case 1:
-        return `${major}.${minor + 1}.0`;
-      case 2:
-        return `${major}.${minor}.${patch + 1}`;
-      case 3:
-        return currentVersion;
-      default:
-        return currentVersion;
+        case '0':
+          return `${major + 1}.0.0`;
+        case '1':
+          return `${major}.${minor + 1}.0`;
+        case '2':
+          return `${major}.${minor}.${patch + 1}`;
+        case '3':
+          return currentVersion;
+        default:
+          return currentVersion;
       }
-    })(Number.parseInt(answer, 10));
+    })(answer);
 
     if (newVersion === currentVersion) {
       this.info('什么也不做');
