@@ -1,4 +1,4 @@
-import { ActionBase, ArgvOption } from '@mohism/sloty';
+import { ActionBase, ArgvOption, IWithSubCommands } from '@mohism/sloty';
 import { Dict } from '@mohism/utils';
 import { blue, red, yellow } from 'colors';
 import { existsSync, writeFileSync } from 'fs';
@@ -17,7 +17,7 @@ class PublishAction extends ActionBase {
     return '尝试更好的管理npm发布方式';
   }
 
-  async run(options: Dict<any>): Promise<any> {
+  async run(options: IWithSubCommands): Promise<void> {
     const { push } = options;
     if (!existsSync(`${process.cwd()}/package.json`)) {
       this.fatal(`Not found: ${process.cwd()}/package.json`);
@@ -47,7 +47,7 @@ class PublishAction extends ActionBase {
       default:
         return currentVersion;
       }
-    })(answer);
+    })(Number.parseInt(answer, 10));
 
     if (newVersion === currentVersion) {
       this.info('什么也不做');

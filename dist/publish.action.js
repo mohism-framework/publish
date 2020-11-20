@@ -53,7 +53,7 @@ class PublishAction extends sloty_1.ActionBase {
                     default:
                         return currentVersion;
                 }
-            })(answer);
+            })(Number.parseInt(answer, 10));
             if (newVersion === currentVersion) {
                 this.info('什么也不做');
                 process.exit();
