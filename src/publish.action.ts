@@ -1,8 +1,8 @@
 import { ActionBase, ArgvOption, IWithSubCommands } from '@mohism/sloty';
-import { Dict } from '@mohism/utils';
 import { blue, red, yellow } from 'colors';
 import { existsSync, writeFileSync } from 'fs';
 import { exec } from 'shelljs';
+import { Dict } from '@mohism/utils';
 
 class PublishAction extends ActionBase {
   options(): Dict<ArgvOption> {
@@ -49,16 +49,16 @@ class PublishAction extends ActionBase {
 
     const newVersion = ((idx: string): string => {
       switch (idx) {
-        case '0':
-          return `${major + 1}.0.0`;
-        case '1':
-          return `${major}.${minor + 1}.0`;
-        case '2':
-          return `${major}.${minor}.${patch + 1}`;
-        case '3':
-          return currentVersion;
-        default:
-          return currentVersion;
+      case '0':
+        return `${major + 1}.0.0`;
+      case '1':
+        return `${major}.${minor + 1}.0`;
+      case '2':
+        return `${major}.${minor}.${patch + 1}`;
+      case '3':
+        return currentVersion;
+      default:
+        return currentVersion;
       }
     })(answer);
 
